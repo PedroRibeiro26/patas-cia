@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Feedback | Patas &amp; Cia</title>
+    <link href="https://fonts.googleapis.com/css2?family=Bagel+Fat+One&family=Nunito:wght@600;800&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <main>
+        <h1>O que dizem de nós</h1>
+        <p id="av" style="margin:14px 0 24px;font-size:1.3rem"></p>
+
+        <div class="two">
+            <form class="card" id="fm">
+                <h3>Deixe sua avaliação</h3>
+
+                <div class="stars" id="st" style="margin:10px 0"></div>
+
+                <label for="n">Seu nome</label><input id="n" required>
+                <label for="m">Como foi?</label><textarea id="m" rows="4" required></textarea>
+                <button class="btn m">Publicar avaliação</button>
+            </form>
+            <div id="ls" class="grid" style="grid-template-columns:1fr"></div>
+        </div>
+    </main>
+    <script src="app.js"></script>
+    <script>
+        let R = [{ n: 'Carla (tutora da Mia)', s: 5, m: 'A Mia voltou cheirosa e calminha. Atendimento carinhoso!' }, { n: 'João (tutor do Thor)', s: 5, m: 'Tosa na tesoura perfeita, preço justo.' }, { n: 'Ana (tutora da Pipoca)', s: 4, m: 'Ótimo serviço, só a fila de sábado que é grande.' }];
+        try { R = [...JSON.parse(localStorage.getItem('fb') || '[]'), ...R] } catch (e) { }
+        let s = 5; function ds() { st.innerHTML = [1, 2, 3, 4, 5].map(i => `<button type="button" class="${i <= s ? 'on' : ''}" onclick="s=${i};ds()" aria-label="${i} estrelas">⭐</button>`).join('') } ds();
+        function dr() { av.textContent = 'Nota média ' + (R.reduce((a, b) => a + b.s, 0) / R.length).toFixed(1) + ' de 5 · ' + R.length + ' avaliações'; ls.innerHTML = R.map(r => `<div class="card hv rv in"><p>${'⭐'.repeat(r.s)}</p><p>${r.m.replace(/</g, '&lt;')}</p><b>${r.n.replace(/</g, '&lt;')}</b></div>`).join('') } dr();
+        fm.onsubmit = e => { e.preventDefault(); const x = { n: n.value, s, m: m.value }; R.unshift(x); try { const o = JSON.parse(localStorage.getItem('fb') || '[]'); o.unshift(x); localStorage.setItem('fb', JSON.stringify(o)) } catch (e) { } fm.reset(); dr(); toast('Obrigado pela avaliação! 🧡') }
+    </script>
+</body>
+
+</html>
