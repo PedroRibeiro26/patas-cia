@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Comprar | Patas &amp; Cia</title>
+    <link href="https://fonts.googleapis.com/css2?family=Bagel+Fat+One&family=Nunito:wght@600;800&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <main>
+        <div class="two">
+            <div class="card" style="text-align:center">
+                <span class="big" style="font-size:8rem" id="em"></span>
+                <h2 id="nm"></h2>
+                <p>Compra fictícia, nenhum valor é cobrado.</p>
+            </div>
+
+            <div class="card">
+                <h3>Seu pedido</h3>
+                <label>Tamanho / versão</label>
+                <select id="vr"></select>
+                <label>Quantidade</label>
+
+                <div class="row" style="margin:8px 0 16px">
+                    <button class="btn y" onclick="q(-1)">−</button>
+                    <b id="qt" style="font-size:1.6rem;min-width:40px;text-align:center">1</b>
+                    <button class="btn y" onclick="q(1)">+</button>
+                </div>
+
+                <label>Forma de pagamento</label>
+
+                <div class="pay">
+                    <label><input type="radio" name="pg" checked>📱 Pix</label>
+                    <label><input type="radio" name="pg">💳 Crédito</label>
+                    <label><input type="radio" name="pg">🏧 Débito</label>
+                    <label><input type="radio" name="pg">💵 Dinheiro</label>
+                </div>
+
+                <p>Total <span class="price" id="tt"></span></p>
+                <br>
+
+                <button class="btn m" onclick="ok()">Confirmar compra</button>
+            </div>
+        </div>
+    </main>
+
+    <div id="ov">
+        <div class="card">
+            <span class="big">🎉</span>
+            <h2>Pedido feito!</h2>
+            <p id="rs"></p>
+            <br>
+
+            <a class="btn y" href="produtos.html">Voltar aos produtos</a>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+
+    <script>
+        const u = new URLSearchParams(location.search), id = +u.get('id') || 0, p = P[id], o = O[id] || 0; let n = 1;
+        em.textContent = p.e; nm.textContent = p.n; vr.innerHTML = p.s.map((s, j) => `<option value="${j}" ${j == u.get('s') ? 'selected' : ''}>${s[0]} · ${f(s[1] * (1 - o / 100))}</option>`).join('');
+        const tot = () => p.s[vr.value][1] * (1 - o / 100) * n; function r() { qt.textContent = n; tt.textContent = f(tot()) }
+        function q(d) { n = Math.max(1, Math.min(20, n + d)); r() } vr.onchange = r; r();
+        function ok() { rs.textContent = `${n}x ${p.n} (${p.s[vr.value][0]}) · ${f(tot())} · pedido nº ${Math.floor(1000 + Math.random() * 9000)}`; ov.classList.add('s') }
+    </script>
+</body>
+
+</html>
