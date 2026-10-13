@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Contato | Patas &amp; Cia</title>
+    <link href="https://fonts.googleapis.com/css2?family=Bagel+Fat+One&family=Nunito:wght@600;800&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <main>
+        <h1>Vamos conversar?</h1>
+        <div class="two" style="margin-top:30px">
+            <div class="grid" style="grid-template-columns:1fr">
+
+                <a class="card" href="tel:+5551999990000">
+                    <h3>📞 (51) 99999-0000</h3>
+                    <p>Ligue ou chame no WhatsApp</p>
+                </a>
+
+                <a class="card" href="mailto:oi@patasecia.com">
+                    <h3>✉️ oi@patasecia.com</h3>
+                    <p>Respondemos em até 1 dia útil</p>
+                </a>
+
+                <div class="card hv">
+                    <h3>📍 Rua dos Focinhos, 123</h3>
+                    <p>Seg a sáb, das 8h às 18h</p>
+                </div>
+            </div>
+
+            <form class="card"
+                onsubmit="event.preventDefault();toast('Mensagem enviada! Já já respondemos 🐾');this.reset()">
+
+                <h3>Envie uma mensagem</h3>
+                <br>
+
+                <label for="a">Seu nome</label>
+                <input id="a" required><label for="b">Nome do pet</label>
+                <input id="b"><label for="c">Assunto</label>
+
+                <select id="c">
+                    <option>Agendar banho ou tosa</option>
+                    <option>Dúvida sobre produtos</option>
+                    <option>Outro</option>
+                </select><label for="d">Mensagem</label><textarea id="d" rows="4" required></textarea>
+
+                <button class="btn m">Enviar mensagem</button>
+
+            </form>
+        </div>
+    </main>
+    <script src="app.js"></script>
+</body>
+
+</html>
