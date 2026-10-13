@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Produtos | Patas &amp; Cia</title>
+    <link href="https://fonts.googleapis.com/css2?family=Bagel+Fat+One&family=Nunito:wght@600;800&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <main>
+        <h1>Produtos</h1>
+        <p style="margin:14px 0 24px;font-size:1.2rem">Clique no produto ou direto no tamanho que você quer.</p>
+        <div class="row" id="ct"></div>
+        <div class="grid" id="g" style="margin-top:30px"></div>
+    </main>
+    <script src="app.js"></script>
+    <script>
+        const cats = ['Todos', ...new Set(P.map(p => p.c))];
+        function d(c) { ct.innerHTML = cats.map(x => `<button class="btn ${x == c ? 'm' : ''}" onclick="d('${x}')">${x}</button>`).join(''); g.innerHTML = P.map((p, i) => c == 'Todos' || p.c == c ? pcard(p, i) : '').join(''); rv() }
+        d('Todos')</script>
+</body>
+
+</html>
