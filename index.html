@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Patas &amp; Cia | Petshop</title>
+    <link href="https://fonts.googleapis.com/css2?family=Bagel+Fat+One&family=Nunito:wght@600;800&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <main>
+        <div class="hero">
+            <div><span class="fl" style="top:-20px;right:10%">🦴</span>
+                <h1 id="t"></h1>
+                <p style="font-size:1.2rem;margin:18px 0 24px;max-width:460px">Banho, tosa e tudo que o seu bichinho
+                    gosta, num lugar onde ele é recebido com festa.</p>
+                <div class="row"><a class="btn" href="produtos.html">Ver produtos</a><a class="btn y"
+                        href="tosa.html">Agendar banho</a></div>
+            </div>
+            <div style="position:relative"><span class="fl" style="top:0;left:-10px;animation-delay:1s">🐱</span><span
+                    class="fl" style="bottom:0;right:-10px;animation-delay:2s">🐰</span>
+                <div class="blob" id="pet" role="img" aria-label="Cachorro">🐶</div>
+            </div>
+        </div>
+        <div class="mq">
+            <div id="mq"></div>
+        </div>
+        <section>
+            <h2>Promoções da semana 🔥</h2>
+            <div class="grid" id="pr"></div>
+        </section>
+        <section>
+            <h2>Mais vendidos</h2>
+            <div class="grid" id="mv"></div>
+        </section>
+        <section>
+            <h2>Serviços mais pedidos</h2>
+            <div class="grid" id="sv"></div>
+        </section>
+    </main>
+    <script src="app.js"></script>
+    <script>
+        document.getElementById('t').innerHTML = 'Seu pet limpinho e feliz'.split(' ').map((w, i) => `<span style="animation-delay:${i * .12}s">${w}&nbsp;</span>`).join('');
+        mq.innerHTML = ('<span>🐾 Banho</span><span>✂️ Tosa</span><span>🦴 Ração</span><span>🎾 Brinquedos</span>').repeat(8);
+        const pets = ['🐶', '🐱', '🐰', '🐹']; let k = 0; pet.onclick = () => { k = (k + 1) % 4; pet.textContent = pets[k]; toast('Au au! Clique de novo 🐾') };
+        pr.innerHTML = Object.keys(O).map(i => pcard(P[i], i)).join('');
+        mv.innerHTML = P.map((p, i) => p.h ? pcard(p, i) : '').join('');
+        sv.innerHTML = S.slice(0, 4).map(s => `<a class="card rv" href="tosa.html"><span class="big">${s[1]}</span><h3>${s[0]}</h3><p>${s[2]}</p><p class="price">a partir de ${f(s[4])}</p></a>`).join('');
+        rv()</script>
+</body>
+
+</html>
