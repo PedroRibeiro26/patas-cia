@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Fotos | Patas &amp; Cia</title>
+    <link href="https://fonts.googleapis.com/css2?family=Bagel+Fat+One&family=Nunito:wght@600;800&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <main>
+        <h1>Clientes de pelo e pena</h1>
+
+        <p style="margin:14px 0 24px;font-size:1.2rem">
+            Toque na foto para virar e ver o que usamos e quanto custou.
+        </p>
+
+        <div class="grid" id="g"></div>
+    </main>
+
+    <script src="app.js"></script>
+    <script>
+        const F = [
+            [
+                'Thor',
+                '🐶',
+                '#ffd60a',
+                'Banho + tosa na tesoura',
+                'Shampoo Pelo de Seda, condicionador e perfume suave',
+                110
+            ],
+            [
+                'Mia',
+                '🐱',
+                '#ff6fb5',
+                'Banho hidratante',
+                'Máscara de hidratação e escovação',
+                65
+            ],
+            [
+                'Pipoca',
+                '🐩',
+                '#2ee6a6',
+                'Tosa completa',
+                'Máquina nº 10, tesoura e laço',
+                85
+            ],
+            [
+                'Bolt',
+                '🐕',
+                '#ff7a1a',
+                'Dia de spa',
+                'Banho, tosa higiênica e escovação de dentes',
+                130
+            ],
+            [
+                'Nina',
+                '🐰',
+                '#b9c8f5',
+                'Banho a seco e corte de unhas',
+                'Espuma seca e lixa suave',
+                40
+            ],
+            [
+                'Rex',
+                '🦮',
+                '#ffd60a',
+                'Banho simples',
+                'Shampoo neutro e secagem',
+                58.5
+            ]
+        ];
+
+        g.innerHTML = F.map(a => `
+            <button
+                class="fp rv"
+                onclick="this.classList.toggle('fl2')"
+                aria-label="Virar cartão de ${a[0]}"
+            >
+                <div class="fi">
+                    <div style="background:#fff">
+                        <div class="ph" style="--c:${a[2]}">${a[1]}</div>
+                        <h3>${a[0]}</h3>
+                        <p>${a[3]}</p>
+                    </div>
+
+                    <div class="bk">
+                        <h3>${a[0]} ✨</h3>
+                        <p><b>Serviço:</b> ${a[3]}</p>
+                        <p><b>Usamos:</b> ${a[4]}</p>
+                        <p class="price" style="margin-top:12px">
+                            Cobrado: ${f(a[5])}
+                        </p>
+                    </div>
+                </div>
+            </button>
+        `).join('');
+
+        rv();
+    </script>
+</body>
+
+</html>
